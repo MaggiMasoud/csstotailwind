@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="dark scroll-smooth">
 
 <head>
   <meta charset="UTF-8">
@@ -9,27 +9,71 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css">
-</head>
+  <!-- <link rel="stylesheet" href="assets/css/styles.css"> -->
+ <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<style type="text/tailwindcss">
+      @theme {
+        --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-text: #0f172a;
+  --color-muted: #64748b;
+  --color-border: #e2e8f0;
+  --color-primary: #6366f1;
+  --color-primary-hover: #4f46e5;
+  --color-on-primary: #ffffff;
 
-<body>
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
+  --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.10);
+
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+      }
+      @custom-variant dark (&:where(.dark, .dark *));
+      @layer base {
+      .dark {
+  --color-bg: #0b1220;
+  --color-surface: #111a2e;
+  --color-text: #e5edf7;
+  --color-muted: #94a3b8;
+  --color-border: #1f2a44;
+  --color-primary: #818cf8;
+  --color-primary-hover: #a5b4fc;
+  --color-on-primary: #0b1220;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.40);
+  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.50);
+}
+      }
+    </style>
+</head>
+<!-- body  -->
+<body class="font-sans bg-bg text-text leading-[1.6] transition-colors duration-200 ">
+
 
   <!-- ================= HEADER ================= -->
-  <header class="site-header">
-    <div class="container header-inner">
-
-      <a href="#" class="logo">maged<span class="logo-dot">.</span>yaseen</a>
-
-      <nav class="nav">
-        <a href="#about" class="nav-link">About</a>
-        <a href="#skills" class="nav-link">Skills</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#contact" class="nav-link">Contact</a>
+<!-- this for site-header -->
+  <header class="sticky top-0 z-10 bg-bg border-b border-border dark:bg-bg dark:text-text ">
+   <!-- this contain 2 class container and header-inner -->
+    <div class="w-full max-w-[1080px] mx-auto px-6 flex justify-between items-center gap-4 py-4 ">
+     <!-- this is for logo class, .logo-dot -->
+      <a href="#" class="font-extrabold text-lg  tracking-[-0.02em] ">maged<span class="text-primary">.</span>yaseen</a>
+       <!-- for nav class  -->
+      <nav class=" hidden md:flex gap-6">
+        <!-- for all nav-links -->
+        <a href="#about" class="text-muted text-sm font-medium transition-colors duration-150  hover:text-text ">About</a>
+        <a href="#skills" class="text-muted text-sm font-medium transition-colors duration-150  hover:text-text">Skills</a>
+        <a href="#projects" class="text-muted text-sm font-medium transition-colors duration-150  hover:text-text">Projects</a>
+        <a href="#contact" class="text-muted text-sm font-medium transition-colors duration-150 hover:text-text">Contact</a>
       </nav>
-
-      <button id="theme-toggle" class="theme-toggle">
-        <span class="theme-icon--moon">🌙</span>
-        <span class="theme-icon--sun">☀️</span>
+      <!-- theme-toggle class -->
+      <button id="theme-toggle" onclick="document.documentElement.classList.toggle('dark')" class="size-10 inline-flex items-center justify-center text-base bg-surface border border-border rounded-full cursor-pointer transition-colors duration-150 hover:border-primary">
+        <!-- theme-icon--moon -->
+        <span class="dark:hidden">🌙</span>
+        <!-- theme-icon-sun  -->
+        <span class="hidden dark:inline">☀️</span>
       </button>
 
     </div>
@@ -38,64 +82,87 @@
   <main>
 
     <!-- ================= HERO ================= -->
-    <section class="hero" id="top">
-      <div class="container hero-inner">
-
-        <div class="hero-content">
-          <p class="status-badge">
-            <span class="status-dot"></span>
+     <!-- hero class  -->
+    <section class="py-16" id="top">
+      <!-- this is have 2 class container and hero-inner -->
+      <div class="w-full max-w-[1080px] my-0 mx-auto px-6 flex flex-col items-center gap-10 text-center ">
+<!-- hero-contnt -->
+        <div class="flex flex-col items-center gap-5 max-w-[560px]  ">
+          <!-- status-badge -->
+          <p class="inline-flex items-center gap-2 py-1.5 px-3  text-[13px] font-medium text-muted bg-surface border border-border rounded-full">
+           <!-- status-dot -->
+            <span class="size-2 bg-green-500 rounded-full "></span>
             Available for work
           </p>
-
-          <h1 class="hero-title">
-            Hi, I'm <span class="accent">Maged Yaseen</span> —<br>
+                <!-- hero-title -->
+          <h1 class="text-[32px] leading-[1.2] font-extrabold tracking-[-0.02em] ">
+            <!-- class accent so will use .hero-title .accent -->
+            Hi, I'm <span class="text-primary">Maged Yaseen</span> —<br>
             I build clean, accessible interfaces.
           </h1>
-
-          <p class="hero-text">
+                <!-- class hero-text  -->
+          <p class="text-muted text-base ">
             Frontend developer in progress. I turn designs into
             pixel-accurate, responsive pages using HTML, CSS, and Tailwind.
           </p>
-
-          <div class="hero-actions">
-            <a href="#projects" class="btn btn--primary">View my work</a>
-            <a href="#" class="btn btn--ghost">Download CV</a>
+          <!-- hero-actions -->
+          <div class="flex flex-wrap justify-center gap-3 ">
+            <!-- .btn .btn--primary -->
+            <a href="#projects" class=" inline-flex items-center py-3 px-[22px] text-sm font-semibold border border-transparent rounded-md transition-colors duration-150 bg-primary text-on-primary hover:bg-primary-hover">View my work</a>
+            <!-- .btn .btn--ghost -->
+            <a href="#" class=" inline-flex items-center py-3 px-[22px] text-sm font-semibold border border-transparent rounded-md transition-colors duration-150 bg-surface text-text border border-border hover:border-primary">Download CV</a>
           </div>
         </div>
-
+          <!-- hero-avatar -->
         <div class="hero-avatar">
-          <img src="assets/imgs/maged.png" alt="Maged Yaseen" class="avatar-img">
+          <!-- .avatar-img -->
+          <img src="assets/imgs/maged.png" alt="Maged Yaseen" class="block max-w-full size-[200px] object-cover rounded-full border-4 border-surface shadow-md ">
         </div>
 
       </div>
     </section>
 
     <!-- ================= ABOUT ================= -->
-    <section class="section" id="about">
-      <div class="container">
-        <h2 class="section-title">About</h2>
-        <p class="section-subtitle">A short intro — written in my own words.</p>
-
-        <div class="about-grid">
-          <p class="about-text">
+    
+    <!-- section class -->
+    <section class="py-16" id="about">
+      <!-- container  -->
+      <div class="w-full max-w-[1080px] my-0 mx-auto  py-0 px-6">
+       <!-- section-title -->
+        <h2 class="text-2xl font-bold tracking-[-0.02em] mb-2 ">About</h2>
+        <!-- section-subtitle -->
+        <p class="text-muted mb-8 ">A short intro — written in my own words.</p>
+         <!-- .about-grid -->
+        <div class="flex flex-col gap-8 md:flex-row md:items-start ">
+          <!-- about-text -->
+          <p class="text-muted max-w-[60ch] md:flex-1 md:min-w-0">
             I'm a self-taught frontend developer based in Alexandria. I fell in love
             with the web when I realized a few lines of code could become
             something people actually use. Right now I'm sharpening my
             HTML, CSS, and Tailwind skills — one project at a time.
           </p>
-
-          <ul class="facts">
-            <li class="fact">
-              <span class="fact-label">Based in</span>
-              <span class="fact-value">Alexandria, Egypt</span>
+            <!-- facts -->
+          <ul class="flex flex-col  gap-3 md:flex-1 md:min-w-0 ">
+            <!-- fact -->
+            <li class="flex justify-between py-3 px-4 bg-surface border border-border rounded-md ">
+             <!-- fact-label -->
+              <span class="text-[13px] text-muted">Based in</span>
+             <!-- fact-value -->
+              <span class="text-sm font-semibold">Alexandria, Egypt</span>
             </li>
-            <li class="fact">
-              <span class="fact-label">Focus</span>
-              <span class="fact-value">HTML · CSS · Tailwind</span>
+            <!-- fact -->
+            <li class="flex justify-between py-3 px-4 bg-surface border border-border rounded-md">
+              <!-- fact-label -->
+              <span class="text-[13px] text-muted">Focus</span>
+              <!-- fact-value -->
+              <span class="text-sm font-semibold">HTML · CSS · Tailwind</span>
             </li>
-            <li class="fact">
-              <span class="fact-label">Learning</span>
-              <span class="fact-value">JavaScript (soon)</span>
+            <!-- fact -->
+            <li class="flex justify-between py-3 px-4 bg-surface border border-border rounded-md">
+              <!-- fact-label -->
+              <span class="text-[13px] text-muted">Learning</span>
+              <!-- fact-value -->
+              <span class="text-sm font-semibold">JavaScript (soon)</span>
             </li>
           </ul>
         </div>
@@ -103,37 +170,50 @@
     </section>
 
     <!-- ================= SKILLS ================= -->
-    <section class="section" id="skills">
-      <div class="container">
-        <h2 class="section-title">Skills</h2>
-        <p class="section-subtitle">The tools I use every day.</p>
-
-        <div class="skills-groups">
-
-          <div class="skills-group">
-            <h3 class="skills-title">Frontend</h3>
-            <ul class="badges">
-              <li class="badge">HTML5</li>
-              <li class="badge">CSS3</li>
-              <li class="badge">Tailwind CSS 4</li>
-              <li class="badge">Responsive Design</li>
+    <!-- section -->
+    <section class="py-16 px-0" id="skills">
+      <!-- container -->
+      <div class="w-full max-w-[1080px] my-0 mx-auto py-0 px-6">
+        <!-- section-title -->
+        <h2 class="text-2xl font-bold tracking-[-0.02em] mb-2">Skills</h2>
+        <!-- section-subtitle -->
+        <p class="text-muted mb-8">The tools I use every day.</p>
+           <!-- skills-groups -->
+        <div class="flex flex-wrap gap-6">
+            <!-- skills-group -->
+          <div class="flex-[1_1_100%] p-5 bg-surface border border-border rounded-lg md:flex-[1_1_calc((100%_-_48px)/3)] ">
+            <!-- skills-title -->
+            <h3 class="text-xs font-semibold uppercase tracking-[0.08em] text-muted mb-3 ">Frontend</h3>
+           <!-- badges -->
+            <ul class="flex flex-wrap gap-2 ">
+              <!-- badge -->
+              <li class="py-1.5 px-3 text-[13px] font-medium bg-bg border border-border rounded-full ">HTML5</li>
+              <li class="py-1.5 px-3 text-[13px] font-medium bg-bg border border-border rounded-full">CSS3</li>
+              <li class="py-1.5 px-3 text-[13px] font-medium bg-bg border border-border rounded-full">Tailwind CSS 4</li>
+              <li class="py-1.5 px-3 text-[13px] font-medium bg-bg border border-border rounded-full">Responsive Design</li>
             </ul>
           </div>
-
-          <div class="skills-group">
-            <h3 class="skills-title">Tools</h3>
-            <ul class="badges">
-              <li class="badge">VS Code</li>
-              <li class="badge">Git &amp; GitHub</li>
-              <li class="badge">Figma</li>
+             <!-- skills-group -->
+          <div class="flex-[1_1_100%] p-5 bg-surface border border-border rounded-lg md:flex-[1_1_calc((100%_-_48px)/3)]">
+            <!-- skills-title -->
+            <h3 class="text-xs font-semibold uppercase tracking-[0.08em] text-muted mb-3">Tools</h3>
+            <!-- badges -->
+            <ul class="flex flex-wrap gap-2">
+              <!-- badge -->
+              <li class="py-1.5 px-3 text-[13px] font-medium bg-bg border border-border rounded-full">VS Code</li>
+              <li class="py-1.5 px-3 text-[13px] font-medium bg-bg border border-border rounded-full">Git &amp; GitHub</li>
+              <li class="py-1.5 px-3 text-[13px] font-medium bg-bg border border-border rounded-full">Figma</li>
             </ul>
           </div>
-
-          <div class="skills-group">
-            <h3 class="skills-title">Learning</h3>
-            <ul class="badges">
-              <li class="badge">JavaScript</li>
-              <li class="badge">Accessibility</li>
+            <!-- skills-group -->
+          <div class="flex-[1_1_100%] p-5 bg-surface border border-border rounded-lg md:flex-[1_1_calc((100%_-_48px)/3)]">
+            <!-- skills-title -->
+            <h3 class="text-xs font-semibold uppercase tracking-[0.08em] text-muted mb-3">Learning</h3>
+            <!-- badges -->
+            <ul class="flex flex-wrap gap-2">
+              <!-- badge -->
+              <li class="py-1.5 px-3 text-[13px] font-medium bg-bg border border-border rounded-full">JavaScript</li>
+              <li class="py-1.5 px-3 text-[13px] font-medium bg-bg border border-border rounded-full">Accessibility</li>
             </ul>
           </div>
 
@@ -142,136 +222,204 @@
     </section>
 
     <!-- ================= PROJECTS ================= -->
-    <section class="section" id="projects">
-      <div class="container">
-        <h2 class="section-title">Projects</h2>
-        <p class="section-subtitle">Selected work — filters will become functional later.</p>
-
-        <div class="filter-bar" role="tablist">
-          <button class="filter-btn is-active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="html-css">HTML &amp; CSS</button>
-          <button class="filter-btn" data-filter="tailwind">Tailwind</button>
-          <button class="filter-btn" data-filter="ui">UI</button>
+    <!-- section -->
+    <section class="py-16 px-0" id="projects">
+      <!-- container -->
+      <div class="w-full max-w-[1080px] my-0 mx-auto py-0 px-6">
+        <!-- section-title -->
+        <h2 class="text-2xl font-bold tracking-[-0.02em] mb-2">Projects</h2>
+        <!-- section-subtitle -->
+        <p class="text-muted mb-8">Selected work — filters will become functional later.</p>
+          <!-- filter-bar -->
+        <div class="flex flex-wrap gap-2 mb-6" role="tablist">
+          <!-- filter-btn -->
+          <button class="py-2 px-4 text-inherit text-[13px] font-medium text-muted bg-surface border border-border rounded-full cursor-pointer transition-colors is-active" data-filter="all">All</button>
+          <button class="py-2 px-4 text-inherit text-[13px] font-medium text-muted bg-surface border border-border rounded-full cursor-pointer transition-colors is-active" data-filter="html-css">HTML &amp; CSS</button>
+          <button class="py-2 px-4 text-inherit text-[13px] font-medium text-muted bg-surface border border-border rounded-full cursor-pointer transition-colors is-active" data-filter="tailwind">Tailwind</button>
+          <button class="py-2 px-4 text-inherit text-[13px] font-medium text-muted bg-surface border border-border rounded-full cursor-pointer transition-colors is-active" data-filter="ui">UI</button>
         </div>
-
-        <div class="projects-grid">
-
-          <article class="project-card" data-category="tailwind ui">
-            <div class="project-cover project-cover--indigo">
-              <div class="project-cover-logo project-cover--white">
-                <img src="assets/imgs/maged.png" alt="Maged Yaseen" class="project-cover-img">
+          <!-- project-grid -->
+        <div class="flex flex-wrap gap-6">
+           <!-- project-card -->
+          <article class="w-full sm:w-[calc((100%_-_24px)/2)] lg:w-[calc((100%_-_48px)/3)] bg-surface border border-border rounded-lg overflow-hidden transition duration-200 hover:-translate-y-1 hover:shadow-md hover:border-primary " data-category="tailwind ui">
+             <!-- project-cover & project-cover--indigo -->
+            <div class="h-35 flex items-center justify-center bg-linear-135 from-indigo-500 to-violet-500">
+              <!-- project-cover-logo  & project-cover--white -->
+              <div class="flex items-center justify-center rounded-full overflow-hidden bg-white">
+               <!-- project-cover-img -->
+                <img src="assets/imgs/maged.png" alt="Maged Yaseen" class="size-[100px] object-cover">
               </div>
             </div>
-            <div class="project-body">
-              <h3 class="project-title">Portfolio Website</h3>
-              <p class="project-desc">A responsive personal portfolio built from scratch.</p>
-              <ul class="project-tags">
-                <li class="project-tag">HTML</li>
-                <li class="project-tag">Tailwind</li>
+            <!-- project-body -->
+            <div class="p-5">
+              <!-- project-title -->
+              <h3 class="text-base font-bold mb-1.5 ">Portfolio Website</h3>
+              <!-- project-desc -->
+              <p class="text-sm text-muted mb-3 ">A responsive personal portfolio built from scratch.</p>
+              <!-- project-tags -->
+              <ul class="flex flex-wrap gap-1.5 mb-4">
+                <!-- project-tag -->
+                <li class="py-1 px-2.5 text-xs font-medium bg-bg border border-border rounded-full">HTML</li>
+                <li class="py-1 px-2.5 text-xs font-medium bg-bg border border-border rounded-full">Tailwind</li>
               </ul>
-              <div class="project-links">
-                <a href="#" class="project-link">Live →</a>
-                <a href="#" class="project-link">Code →</a>
+              <!-- project-links -->
+              <div class="flex gap-4">
+                <!-- project-link -->
+                <a href="#" class="text-[13px] font-semibold text-primary transition-colors duration-150 hover:text-primary-hover focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-3 focus-visible:rounded-sm">Live →</a>
+                <a href="#" class="text-[13px] font-semibold text-primary transition-colors duration-150 hover:text-primary-hover focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-3 focus-visible:rounded-sm">Code →</a>
               </div>
             </div>
           </article>
-
-          <article class="project-card" data-category="html-css">
-            <div class="project-cover project-cover--amber">
-              <div class="project-cover-logo project-cover--white">
-                <img src="assets/imgs/masar-logo.png" alt="Masar Training Center" class="project-cover-img">
+            <!-- project-card -->
+          <article class="w-full sm:w-[calc((100%_-_24px)/2)] lg:w-[calc((100%_-_48px)/3)] bg-surface border border-border rounded-lg overflow-hidden transition duration-200 hover:-translate-y-1 hover:shadow-md hover:border-primary" data-category="html-css">
+            <!-- /project-cover& project-cover--amber -->
+            <div class="h-35 flex items-center justify-center bg-linear-135 from-amber-500 to-red-500">
+             <!-- project-cover-logo & project-cover-white -->
+              <div class="flex items-center justify-center rounded-full overflow-hidden bg-white">
+                <!-- project-cover-img -->
+                <img src="assets/imgs/masar-logo.png" alt="Masar Training Center" class="size-[100px] object-cover">
               </div>
             </div>
-            <div class="project-body">
-              <h3 class="project-title">Masar Academy</h3>
-              <p class="project-desc">A website for Masar Training Center, a training center for software engineering.</p>
-              <ul class="project-tags">
-                <li class="project-tag">HTML</li>
-                <li class="project-tag">CSS</li>
+              <!-- project-body -->
+            <div class="p-5">
+              <!-- project-title -->
+              <h3 class="text-base font-bold mb-1.5">Masar Academy</h3>
+              <!-- project-desc -->
+              <p class="text-sm text-muted mb-3">A website for Masar Training Center, a training center for software engineering.</p>
+              <!-- project-tags -->
+              <ul class="flex flex-wrap gap-1.5 mb-4">
+                <!-- project-tag -->
+                <li class="py-1 px-2.5 text-xs font-medium bg-bg border border-border rounded-full">HTML</li>
+                <li class="py-1 px-2.5 text-xs font-medium bg-bg border border-border rounded-full">CSS</li>
               </ul>
-              <div class="project-links">
-                <a href="#" class="project-link">Live →</a>
-                <a href="#" class="project-link">Code →</a>
+                 <!-- project-links -->
+              <div class="flex gap-4">
+                  <!-- project-link -->
+                <a href="#" class="text-[13px] font-semibold text-primary transition-colors duration-150 hover:text-primary-hover focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-3 focus-visible:rounded-sm">Live →</a>
+                <a href="#" class="text-[13px] font-semibold text-primary transition-colors duration-150 hover:text-primary-hover focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-3 focus-visible:rounded-sm">Code →</a>
               </div>
             </div>
           </article>
+           <!-- project-card -->
+          <article class="w-full sm:w-[calc((100%_-_24px)/2)] lg:w-[calc((100%_-_48px)/3)] bg-surface border border-border rounded-lg overflow-hidden transition duration-200 hover:-translate-y-1 hover:shadow-md hover:border-primary" data-category="tailwind">
+            <!-- project-cover & project-cover--emerald -->
+            <div class="h-35 flex items-center justify-center bg-linear-135 from-emerald-500 to-teal-500">
+              <!-- project-cover-logo & project-cover-white -->
+              <div class="flex items-center justify-center rounded-full overflow-hidden bg-white">
+                 <!-- project-cover-img -->
 
-          <article class="project-card" data-category="tailwind">
-            <div class="project-cover project-cover--emerald">
-              <div class="project-cover-logo project-cover--white">
-                <img src="assets/imgs/dashboard.png" alt="Dashboard UI" class="project-cover-img">
+                <img src="assets/imgs/dashboard.png" alt="Dashboard UI" class="size-[100px] object-cover">
               </div>
             </div>
-            <div class="project-body">
-              <h3 class="project-title">Dashboard UI</h3>
-              <p class="project-desc">A static analytics dashboard with a clean grid layout.</p>
-              <ul class="project-tags">
-                <li class="project-tag">Tailwind</li>
-                <li class="project-tag">Grid</li>
+            <!-- project-body -->
+            <div class="p-5">
+              <!-- project-title -->
+              <h3 class="text-base font-bold mb-1.5">Dashboard UI</h3>
+             <!-- project-desc -->
+              <p class="text-sm text-muted mb-3">A static analytics dashboard with a clean grid layout.</p>
+              <!-- project-tags -->
+              <ul class="flex flex-wrap gap-1.5 mb-4">
+               <!-- project-tag -->
+                <li class="py-1 px-2.5 text-xs font-medium bg-bg border border-border rounded-full">Tailwind</li>
+                <li class="py-1 px-2.5 text-xs font-medium bg-bg border border-border rounded-full">Grid</li>
               </ul>
-              <div class="project-links">
-                <a href="#" class="project-link">Live →</a>
-                <a href="#" class="project-link">Code →</a>
+              <!-- project-links -->
+              <div class="flex gap-4">
+                <!-- project-link -->
+                <a href="#" class="text-[13px] font-semibold text-primary transition-colors duration-150 hover:text-primary-hover focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-3 focus-visible:rounded-sm">Live →</a>
+                <a href="#" class="text-[13px] font-semibold text-primary transition-colors duration-150 hover:text-primary-hover focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-3 focus-visible:rounded-sm">Code →</a>
               </div>
             </div>
           </article>
+          <!-- project-card -->
 
-          <article class="project-card" data-category="html-css ui">
-            <div class="project-cover project-cover--amber">
-              <div class="project-cover-logo project-cover--white">
-                <img src="assets/imgs/blog.png" alt="Maged Yaseen" class="project-cover-img">
+          <article class="w-full sm:w-[calc((100%_-_24px)/2)] lg:w-[calc((100%_-_48px)/3)] bg-surface border border-border rounded-lg overflow-hidden transition duration-200 hover:-translate-y-1 hover:shadow-md hover:border-primary" data-category="html-css ui">
+           <!-- /project-cover& project-cover--amber -->
+            <div class="h-35 flex items-center justify-center bg-linear-135 from-amber-500 to-red-500">
+              <!-- project-cover-logo & project-cover-white -->
+              <div class="flex items-center justify-center rounded-full overflow-hidden bg-white">
+                <!-- project-cover-img -->
+                <img src="assets/imgs/blog.png" alt="Maged Yaseen" class="size-[100px] object-cover">
               </div>
             </div>
-            <div class="project-body">
-              <h3 class="project-title">Blog Landing Page</h3>
-              <p class="project-desc">A minimal blog layout focused on typography.</p>
-              <ul class="project-tags">
-                <li class="project-tag">HTML</li>
-                <li class="project-tag">CSS</li>
+             <!-- project-body -->
+            <div class="p-5">
+              <!-- project-title -->
+              <h3 class="text-base font-bold mb-1.5">Blog Landing Page</h3>
+              <!-- project-desc -->
+              <p class="text-sm text-muted mb-3">A minimal blog layout focused on typography.</p>
+              <!-- project-tags -->
+              <ul class="flex flex-wrap gap-1.5 mb-4">
+                <!-- project-tag -->
+                <li class="py-1 px-2.5 text-xs font-medium bg-bg border border-border rounded-full">HTML</li>
+                <li class="py-1 px-2.5 text-xs font-medium bg-bg border border-border rounded-full">CSS</li>
               </ul>
-              <div class="project-links">
-                <a href="#" class="project-link">Live →</a>
-                <a href="#" class="project-link">Code →</a>
+              <!-- project-links -->
+              <div class="flex gap-4">
+                <!-- project-link -->
+                <a href="#" class="text-[13px] font-semibold text-primary transition-colors duration-150 hover:text-primary-hover focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-3 focus-visible:rounded-sm">Live →</a>
+                <a href="#" class="text-[13px] font-semibold text-primary transition-colors duration-150 hover:text-primary-hover focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-3 focus-visible:rounded-sm">Code →</a>
               </div>
             </div>
           </article>
+          <!-- project-card -->
 
-          <article class="project-card" data-category="tailwind ui">
-            <div class="project-cover project-cover--emerald">
-              <div class="project-cover-logo project-cover--white">
-                <img src="assets/imgs/soon.png" alt="Maged Yaseen" class="project-cover-img">
+          <article class="w-full sm:w-[calc((100%_-_24px)/2)] lg:w-[calc((100%_-_48px)/3)] bg-surface border border-border rounded-lg overflow-hidden transition duration-200 hover:-translate-y-1 hover:shadow-md hover:border-primary" data-category="tailwind ui">
+            <!-- /project-cover& project-cover--emerald -->
+            <div class="h-35 flex items-center justify-center bg-linear-135 from-emerald-500 to-teal-500">
+              <!-- project-cover-logo & project-cover-white -->
+              <div class="flex items-center justify-center rounded-full overflow-hidden bg-white">
+                <!-- project-cover-img -->
+                <img src="assets/imgs/soon.png" alt="Maged Yaseen" class="size-[100px] object-cover">
               </div>
             </div>
-            <div class="project-body">
-              <h3 class="project-title">Coming Soon Page</h3>
-              <p class="project-desc">A centered hero with a gradient background.</p>
-              <ul class="project-tags">
-                <li class="project-tag">Tailwind</li>
-                <li class="project-tag">Flexbox</li>
+            <!-- project-body -->
+            <div class="p-5">
+              <!-- project-title -->
+              <h3 class="text-base font-bold mb-1.5">Coming Soon Page</h3>
+              <!-- project-desc -->
+              <p class="text-sm text-muted mb-3">A centered hero with a gradient background.</p>
+             <!-- project-tags -->
+              <ul class="flex flex-wrap gap-1.5 mb-4">
+                <!-- project-tag -->
+                <li class="py-1 px-2.5 text-xs font-medium bg-bg border border-border rounded-full">Tailwind</li>
+                <li class="py-1 px-2.5 text-xs font-medium bg-bg border border-border rounded-full">Flexbox</li>
               </ul>
-              <div class="project-links">
-                <a href="#" class="project-link">Live →</a>
-                <a href="#" class="project-link">Code →</a>
+              <!-- project-links -->
+              <div class="flex gap-4">
+                <!-- project-link -->
+                <a href="#" class="text-[13px] font-semibold text-primary transition-colors duration-150 hover:text-primary-hover focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-3 focus-visible:rounded-sm">Live →</a>
+                <a href="#" class="text-[13px] font-semibold text-primary transition-colors duration-150 hover:text-primary-hover focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-3 focus-visible:rounded-sm">Code →</a>
               </div>
             </div>
           </article>
-
-          <article class="project-card" data-category="html-css">
-            <div class="project-cover project-cover--indigo">
-              <div class="project-cover-logo project-cover--white">
-                <img src="assets/imgs/cart.png" alt="Maged Yaseen" class="project-cover-img">
+            <!-- project-card -->
+          <article class="w-full sm:w-[calc((100%_-_24px)/2)] lg:w-[calc((100%_-_48px)/3)] bg-surface border border-border rounded-lg overflow-hidden transition duration-200 hover:-translate-y-1 hover:shadow-md hover:border-primary" data-category="html-css">
+            <!-- /project-cover& project-cover--indigo -->
+            <div class="h-35 flex items-center justify-center bg-linear-135 from-indigo-500 to-violet-500">
+              <!-- project-cover-logo & project-cover-white -->
+              <div class="flex items-center justify-center rounded-full overflow-hidden bg-white">
+                <!-- project-cover-img -->
+                <img src="assets/imgs/cart.png" alt="Maged Yaseen" class="size-[100px] object-cover">
               </div>
             </div>
-            <div class="project-body">
-              <h3 class="project-title">Product Card</h3>
-              <p class="project-desc">A reusable product card with hover states.</p>
-              <ul class="project-tags">
-                <li class="project-tag">HTML</li>
-                <li class="project-tag">CSS</li>
+            <!-- project-body -->
+            <div class="p-5">
+              <!-- project-title -->
+              <h3 class="text-base font-bold mb-1.5">Product Card</h3>
+              <!-- project-desc -->
+              <p class="text-sm text-muted mb-3">A reusable product card with hover states.</p>
+              <!-- project-tags -->
+              <ul class="flex flex-wrap gap-1.5 mb-4">
+               <!-- project-tag -->
+                <li class="py-1 px-2.5 text-xs font-medium bg-bg border border-border rounded-full">HTML</li>
+                <li class="py-1 px-2.5 text-xs font-medium bg-bg border border-border rounded-full">CSS</li>
               </ul>
-              <div class="project-links">
-                <a href="#" class="project-link">Live →</a>
-                <a href="#" class="project-link">Code →</a>
+              <!-- project-links -->
+              <div class="flex gap-4">
+                <!-- project-link -->
+                <a href="#" class="text-[13px] font-semibold text-primary transition-colors duration-150 hover:text-primary-hover focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-3 focus-visible:rounded-sm">Live →</a>
+                <a href="#" class="text-[13px] font-semibold text-primary transition-colors duration-150 hover:text-primary-hover focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-3 focus-visible:rounded-sm">Code →</a>
               </div>
             </div>
           </article>
@@ -281,15 +429,20 @@
     </section>
 
     <!-- ================= CONTACT ================= -->
-    <section class="section" id="contact">
-      <div class="container contact-inner">
-        <h2 class="section-title">Let's build something</h2>
-        <p class="section-subtitle">Feel free to reach out — links only, no forms.</p>
-
-        <div class="contact-links">
-          <a href="mailto:magedyaseen@gmail.com" class="contact-link">✉️ Email</a>
-          <a href="https://github.com/magedyaseen" class="contact-link">🐙 GitHub</a>
-          <a href="https://linkedin.com/in/magedyaseen" class="contact-link">💼 LinkedIn</a>
+    <!-- section -->
+    <section class="py-16 px-0" id="contact">
+      <!-- container &contact-inner -->
+      <div class="w-full max-w-[1080px] my-0 mx-auto py-0 px-6 text-center">
+        <!-- section-title -->
+        <h2 class="text-2xl font-bold tracking-[-0.02em] mb-2">Let's build something</h2>
+        <!-- section-subtitle -->
+        <p class="text-muted mb-8">Feel free to reach out — links only, no forms.</p>
+           <!-- contact-links -->
+        <div class="flex flex-wrap justify-center gap-3">
+          <!-- contact-link & contact-link hover -->
+          <a href="mailto:magedyaseen@gmail.com" class="inline-flex items-center gap-2 py-3 px-5 text-sm font-semibold bg-surface border border-border rounded-full transition-colors duration-150 hover:text-primary hover:border-primary ">✉️ Email</a>
+          <a href="https://github.com/magedyaseen" class="inline-flex items-center gap-2 py-3 px-5 text-sm font-semibold bg-surface border border-border rounded-full transition-colors duration-150 hover:text-primary hover:border-primary">🐙 GitHub</a>
+          <a href="https://linkedin.com/in/magedyaseen" class="inline-flex items-center gap-2 py-3 px-5 text-sm font-semibold bg-surface border border-border rounded-full transition-colors duration-150 hover:text-primary hover:border-primary">💼 LinkedIn</a>
         </div>
       </div>
     </section>
@@ -297,10 +450,14 @@
   </main>
 
   <!-- ================= FOOTER ================= -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p class="footer-text">© 2026 Maged Yaseen. Built with HTML &amp; CSS.</p>
-      <a href="#top" class="footer-link">Back to top ↑</a>
+  <!-- site-footer -->
+  <footer class="mt-8 py-8 border-t border-border">
+    <!-- container & footer-inner  -->
+    <div class="w-full max-w-[1080px] my-0 mx-auto py-0 px-6 flex flex-col items-center gap-3 text-center md:flex-row md:justify-between md:text-left">
+      <!-- footer-text -->
+      <p class="text-[13px] text-muted">© 2026 Maged Yaseen. Built with HTML &amp; CSS.</p>
+     <!-- footer-link -->
+      <a href="#top" class="text-[13px] font-semibold text-primary">Back to top ↑</a>
     </div>
   </footer>
 
